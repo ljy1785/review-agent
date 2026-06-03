@@ -9,6 +9,8 @@ from langgraph.graph import StateGraph, START, END
 
 load_dotenv()
 
+# 수정
+
 # LLM 로드
 llm = ChatOpenAI(
     api_key=os.getenv("UPSTAGE_API_KEY"),
