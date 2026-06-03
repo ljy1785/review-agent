@@ -24,6 +24,8 @@ ReasonCode = Literal[
     "QUALITY_ERROR", "AMBIGUOUS_SENTIMENT", "MIXED_SENTIMENT",
     "UNSUPPORTED_ASPECT", "OK"
 ]
+RETRYABLE = {"OUTPUT_ERROR", "SCOPE_ERROR", "EVIDENCE_ERROR"}
+
 
 # 파싱 함수
 def parse_dict(text: str, default: dict) -> dict:
@@ -51,6 +53,8 @@ class ReviewState(TypedDict):
     # 흐름 제어 및 오케스트레이션 필수 키
     next_agent: Literal['analyzer', 'critic', 'end']
     critic_reason: Optional[str]
+    reason_code : Optional[str]
+    repair_directive: Optional[str]
 
 
 # analyzer_node
